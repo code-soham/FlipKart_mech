@@ -8,18 +8,6 @@ import {
   Chip,
 } from "@mui/material";
 export default function ProductCard(props: any) {
-  const data = {
-    // _id: ObjectId("62f944ca48236a149fc2a42b"),
-    product_name: "Club Wagon",
-    date_listed: new Date("2002-08-13T06:56:30.000Z"),
-    user_rating: 2.7,
-    mrp: 39810.67,
-    sp: 20000.67,
-    discount: null,
-    brand: "Ford",
-    free_del: true,
-    assured: true,
-  };
   return (
     <React.Fragment>
       <Card

@@ -50,6 +50,7 @@ export default function Content() {
       <Filters
         brands={brands}
         setBrands={setBrands}
+        setPage={setPage}
         fassured={fassured}
         setFassured={setFassured}
         ratingFilter={ratingFilter}

@@ -6,27 +6,20 @@ import {
   InputAdornment,
   Accordion,
   AccordionSummary,
-  Button,
   AccordionDetails,
   TextField,
   Chip,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import axios from "axios";
-import {
-  Search,
-  ExpandMore,
-  Delete,
-  Close,
-  CloseRounded,
-} from "@mui/icons-material";
+import { Search, ExpandMore, CloseRounded } from "@mui/icons-material";
 export default function Filters(props: any) {
   const [brands, setBrands] = React.useState<string[]>([]);
 
   useEffect(() => {
     axios({
       method: "post",
-      url: process.env.REACT_APP_API_URL+"/brands",
+      url: process.env.REACT_APP_API_URL + "/brands",
     })
       .then((res) => {
         setBrands(res.data.brands);
@@ -81,6 +74,7 @@ export default function Filters(props: any) {
             size="small"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               props.setFassured(event.target.checked);
+              props.setPage(1);
             }}
           />
           <img
@@ -118,6 +112,7 @@ export default function Filters(props: any) {
                   <CloseRounded htmlColor="#f4f" sx={{ fontSize: "14px" }} />
                 }
                 onClick={() => {
+                  props.setPage(1);
                   props.setBrands([]);
                 }}
                 label="Clear All"
@@ -169,6 +164,7 @@ export default function Filters(props: any) {
                       checked={props.brands.includes(brand)}
                       id={brand}
                       onChange={(e) => {
+                        props.setPage(1);
                         if (e.target.checked) {
                           props.setBrands([...props.brands, brand]);
                         } else {
@@ -206,6 +202,7 @@ export default function Filters(props: any) {
                   <CloseRounded htmlColor="#f4f" sx={{ fontSize: "14px" }} />
                 }
                 onClick={() => {
+                  props.setPage(1);
                   props.setRatingFilter([]);
                 }}
                 label="Clear All"
@@ -226,6 +223,7 @@ export default function Filters(props: any) {
                   checked={props.ratingFilter.includes(rating[0])}
                   id={rating}
                   onChange={(e) => {
+                    props.setPage(1);
                     if (e.target.checked) {
                       props.setRatingFilter([...props.ratingFilter, rating[0]]);
                     } else {
@@ -264,6 +262,7 @@ export default function Filters(props: any) {
                   <CloseRounded htmlColor="#f4f" sx={{ fontSize: "14px" }} />
                 }
                 onClick={() => {
+                  props.setPage(1);
                   props.setDiscount([]);
                 }}
                 label="Clear All"
@@ -284,6 +283,7 @@ export default function Filters(props: any) {
                   id={dis}
                   checked={props.discount.includes(dis.substring(0, 2))}
                   onChange={(e) => {
+                    props.setPage(1);
                     if (e.target.checked) {
                       props.setDiscount([
                         ...props.discount,
