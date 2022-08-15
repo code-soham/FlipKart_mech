@@ -22,7 +22,7 @@ export default function Content() {
     };
     axios({
       method: "post",
-      url: "http://localhost:8000/get",
+      url: process.env.REACT_APP_API_URL+"/get",
       data: params,
     })
       .then((res) => {

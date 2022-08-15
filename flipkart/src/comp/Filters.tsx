@@ -26,7 +26,7 @@ export default function Filters(props: any) {
   useEffect(() => {
     axios({
       method: "post",
-      url: "http://localhost:8000/brands",
+      url: process.env.REACT_APP_API_URL+"/brands",
     })
       .then((res) => {
         setBrands(res.data.brands);
